@@ -93,9 +93,14 @@ public class GraphUndirectedMI extends GraphMI {
         for (int i = 0; i < this.incidenceMatrix[0].length; i++) {
             ArrayList<Vertex> edge = new ArrayList<>();
 
+            boolean loop = isLoop(i);
+
             for (int j = 0; j < this.incidenceMatrix.length; j++) {
                 if (this.incidenceMatrix[j][i] != 0) {
                     edge.add(vertices.get(j));
+                    if (loop) {
+                        edge.add(vertices.get(j));
+                    }
                 }
             }
 

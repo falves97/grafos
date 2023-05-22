@@ -55,6 +55,8 @@ public class GraphService {
         System.setProperty("org.graphstream.ui", "swing");
 
         Graph graph = loadGraph(graphMI, graphName);
+        graph.setAttribute("ui.quality");
+        graph.setAttribute("ui.antialias");
 
         Viewer viewer = graph.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.EXIT);

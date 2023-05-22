@@ -15,9 +15,8 @@ public class GraphDirected extends GraphMI {
         for (int edge = 0; edge < this.incidenceMatrix[vIndex].length; edge++) {
             if (this.incidenceMatrix[vIndex][edge] < 0) {
                 grade++;
-                if (isLoop(edge)) {
-                    grade++;
-                }
+            } else if (isLoop(edge)) {
+                grade++;
             }
         }
 
@@ -75,9 +74,14 @@ public class GraphDirected extends GraphMI {
             edge.add(null);
             edge.add(null);
 
+            boolean loop = isLoop(i);
+
             for (int j = 0; j < this.incidenceMatrix.length; j++) {
                 if (this.incidenceMatrix[j][i] > 0) {
                     edge.set(0, vertices.get(j));
+                    if (loop) {
+                        edge.set(1, vertices.get(j));
+                    }
                 } else if (this.incidenceMatrix[j][i] < 0) {
                     edge.set(1, vertices.get(j));
                 }
