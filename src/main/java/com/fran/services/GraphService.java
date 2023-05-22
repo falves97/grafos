@@ -1,5 +1,6 @@
 package com.fran.services;
 
+import com.fran.estructure.GraphDirected;
 import com.fran.estructure.GraphMI;
 import com.fran.estructure.Vertex;
 import org.graphstream.graph.Graph;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 public class GraphService {
 
     private static Graph loadGraph(GraphMI graphMI, String graphName) {
+        boolean isDirected = graphMI instanceof GraphDirected;
+
         Graph graph = new SingleGraph(graphName.toUpperCase());
         ArrayList<ArrayList<Vertex>> edges = graphMI.allEdges();
 
@@ -30,7 +33,7 @@ public class GraphService {
                 graph.addNode(vY);
             }
 
-            graph.addEdge(vX + vY, vX, vY);
+            graph.addEdge(vX + vY, vX, vY, isDirected);
         }
 
         for (Node node : graph) {

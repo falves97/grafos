@@ -136,7 +136,15 @@ public class Main {
 
         ArrayList<Vertex> neighbors = graphMI.neighbors(v);
 
-        System.out.println("Vizinhos de " + v + ": " + neighbors);
+        System.out.print("Vizinhos de " + v + ": [");
+        for (int i = 0; i < neighbors.size(); i++) {
+            if (i < neighbors.size() - 1) {
+                System.out.print(neighbors.get(i).getTitle() + ", ");
+            } else {
+                System.out.print(neighbors.get(i).getTitle());
+            }
+        }
+        System.out.println("]");
     }
 
     public static void edges(GraphMI graphMI) {
